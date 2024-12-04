@@ -1,9 +1,11 @@
 package ch.aamiguet.advent2024
 
+import scala.language.experimental.namedTuples
+
 object Day4 extends App with Data("data/day4.txt"):
 
-  type Coord = (Int, Int)
-  type Direction = (Int, Int)
+  type Coord = (x: Int, y: Int)
+  type Direction = (x: Int, y: Int)
 
   lazy val directions: List[Direction] = for
     x <- List(-1, 0, 1)
@@ -20,7 +22,7 @@ object Day4 extends App with Data("data/day4.txt"):
     s.toMap
 
   def nextCoord(coord: Coord, direction: Direction): Coord =
-    (coord._1 + direction._1, coord._2 + direction._2)
+    (coord.x + direction.x, coord.y + direction.y)
 
   def isWord(coord: Coord, grid: Map[Coord, Char], direction: Direction, word: String): Boolean =
     if word.isEmpty then true
@@ -35,8 +37,8 @@ object Day4 extends App with Data("data/day4.txt"):
 
   def diags(coord: Coord): List[(Coord, Coord)] =
     List(
-      ((coord._1 - 1, coord._2 - 1), (coord._1 + 1, coord._2 + 1)),
-      ((coord._1 - 1, coord._2 + 1), (coord._1 + 1, coord._2 - 1)),
+      ((coord.x - 1, coord.y - 1), (coord.x + 1, coord.y + 1)),
+      ((coord.x - 1, coord.y + 1), (coord.x + 1, coord.y - 1)),
     )
 
   def isCross(coord: Coord, grid: Map[Coord, Char]): Boolean =

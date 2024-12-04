@@ -20,7 +20,7 @@ object Day2 extends App with Data("data/day2.txt"):
 
   def isSafeDampener(levels: List[Int]): Boolean =
     val size = levels.size
-    var range = (0 until size).toList
+    val range = (0 until size).toList
     val all = levels :: range.map(n => levels.take(n) ++ levels.drop(n + 1))
     all.exists(isSafe)
 
