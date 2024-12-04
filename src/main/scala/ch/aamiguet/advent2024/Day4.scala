@@ -14,9 +14,9 @@ object Day4 extends App with Data("data/day4.txt"):
 
   def gridMap(lines: List[String]): Map[Coord, Char] =
     val s = for
-      x <- 0 until lines.size
-      y <- 0 until lines.head.size
-    yield (x, y) -> lines(x)(y)
+      (line, x) <- lines.zipWithIndex
+      y <- 0 until line.size
+    yield (x, y) -> line(y)
     s.toMap
 
   def nextCoord(coord: Coord, direction: Direction): Coord =
@@ -31,9 +31,7 @@ object Day4 extends App with Data("data/day4.txt"):
         case _ => false
 
   def wordCount(coord: Coord, grid: Map[Coord, Char]): Int =
-    if grid(coord) == 'X' then
-      directions.filter(dir => isWord(nextCoord(coord, dir), grid, dir, "MAS")).size
-    else 0
+    directions.filter(dir => isWord(coord, grid, dir, "XMAS")).size
 
   def diags(coord: Coord): List[(Coord, Coord)] =
     List(
@@ -51,12 +49,12 @@ object Day4 extends App with Data("data/day4.txt"):
     else false
 
   def wordCount(grid: Map[Coord, Char]): Int =
-    grid.keySet.foldLeft(0): (count, k) =>
-      count + wordCount(k, grid)
+    grid.keySet.foldLeft(0): (count, coord) =>
+      count + wordCount(coord, grid)
 
   def crossCount(grid: Map[Coord, Char]): Int =
-    grid.keySet.foldLeft(0): (count, k) =>
-      if isCross(k, grid) then count + 1
+    grid.keySet.foldLeft(0): (count, coord) =>
+      if isCross(coord, grid) then count + 1
       else count
 
   println(wordCount(grid))
