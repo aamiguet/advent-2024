@@ -4,3 +4,4 @@
 * Day 2: too tired to find an elegant solution 🥲
 * Day 3: regular expression and finding indexes
 * Day 4: a missed opportunity to use named tuples. Next time!
+* Day 5: I refactored day 4!
