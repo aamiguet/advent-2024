@@ -60,7 +60,7 @@ object Day5 extends App with Data("data/day5.txt"):
   def sumOfMiddlePage(updates: List[Update]): Int =
     updates.map(middlePage).sum
 
-  lazy val printing: PrintQueue = PrintQueue(lines)
+  lazy val printQueue = PrintQueue(lines)
 
-  println(sumOfMiddlePage(printing.validUpdates))
-  println(sumOfMiddlePage(printing.fixedInvalidUpdates))
+  println(sumOfMiddlePage(printQueue.validUpdates))
+  println(sumOfMiddlePage(printQueue.fixedInvalidUpdates))
