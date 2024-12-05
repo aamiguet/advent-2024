@@ -1,6 +1,7 @@
 ThisBuild / scalaVersion := "3.6.2-RC3"
 ThisBuild / scalacOptions ++= Seq(
-  "-encoding", "utf-8",
+  "-encoding",
+  "utf-8",
   "-deprecation",
   "-explaintypes",
   "-feature",

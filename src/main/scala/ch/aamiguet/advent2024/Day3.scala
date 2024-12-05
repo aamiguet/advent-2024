@@ -1,6 +1,6 @@
 package ch.aamiguet.advent2024
 
-object Day3 extends App with Data("data/day3.txt") {
+object Day3 extends App with Data("data/day3.txt"):
 
   def multiply(memory: String): Long =
     val regex = """mul\((\d+),(\d+)\)""".r
@@ -28,4 +28,3 @@ object Day3 extends App with Data("data/day3.txt") {
 
   println(multiply(lines.mkString))
   println(multiplyEnabled(lines.mkString))
-}
