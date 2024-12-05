@@ -3,8 +3,10 @@ package ch.aamiguet.advent2024
 import org.scalatest.*
 import flatspec.*
 import matchers.*
+import scala.language.experimental.namedTuples
 
 import Day4.*
+
 
 class Day4Spec extends AnyFlatSpec with should.Matchers:
 
