@@ -4,7 +4,7 @@ object Day5 extends App with Data("data/day5.txt"):
 
   type Update = List[Int]
 
-  case class Printing(
+  case class PrintQueue(
       afterPages: Map[Int, Set[Int]],
       updates: List[Update],
   ):
@@ -41,8 +41,8 @@ object Day5 extends App with Data("data/day5.txt"):
     lazy val (validUpdates, invalidUpdates) =
       updates.partition(isValid)
 
-  object Printing:
-    def apply(lines: List[String]): Printing =
+  object PrintQueue:
+    def apply(lines: List[String]): PrintQueue =
       val (rs, us) = lines.span(_.nonEmpty)
       val afterPages = rs
         .map:
@@ -52,7 +52,7 @@ object Day5 extends App with Data("data/day5.txt"):
         .toMap
       val updates = us.tail.map:
         _.split(",").toList.map(_.toInt)
-      Printing(afterPages, updates)
+      PrintQueue(afterPages, updates)
 
   def middlePage(update: Update): Int =
     update(update.size / 2)
@@ -60,7 +60,7 @@ object Day5 extends App with Data("data/day5.txt"):
   def sumOfMiddlePage(updates: List[Update]): Int =
     updates.map(middlePage).sum
 
-  lazy val printing: Printing = Printing(lines)
+  lazy val printing: PrintQueue = PrintQueue(lines)
 
   println(sumOfMiddlePage(printing.validUpdates))
   println(sumOfMiddlePage(printing.fixedInvalidUpdates))

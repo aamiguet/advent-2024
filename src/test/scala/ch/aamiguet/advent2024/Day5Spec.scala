@@ -38,7 +38,7 @@ class Day5Spec extends AnyFlatSpec with should.Matchers:
       |61,13,29
       |97,13,75,29,47""".stripMargin
 
-  val printing = Printing(test.split("\n").toList)
+  val printing = PrintQueue(test.split("\n").toList)
 
   "Day5" should "find the 3 valid updates" in {
     sumOfMiddlePage(printing.validUpdates) shouldBe 143
