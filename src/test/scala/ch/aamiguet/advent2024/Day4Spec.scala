@@ -7,7 +7,6 @@ import scala.language.experimental.namedTuples
 
 import Day4.*
 
-
 class Day4Spec extends AnyFlatSpec with should.Matchers:
 
   val test =
