@@ -32,8 +32,7 @@ object Day6 extends Data("data/day6.txt"):
       x <- 0 until line.size
     yield (x, y) -> (line(x) match
       case '#' => Tile.Block
-      case '^' =>
-        Tile.Start
+      case '^' => Tile.Start
       case _ => Tile.Free
     )
     g.toMap
@@ -94,13 +93,13 @@ object Day6 extends Data("data/day6.txt"):
           case Tile.Start => potentialLoopBlockPos((nextPos(coord, dir), dir), acc, newFree)
           case _ =>
             val newAcc =
-              if !acc(nextCandPos) && !newFree(nextCandPos) && isLoop(
-                  (coord, nextDir(dir)),
-                  Set(currentTile),
-                )(using
-                  grid.updated(nextCandPos, Tile.Block),
-                )
-              then acc + nextCandPos
+              lazy val isNew = !acc(nextCandPos)
+              // a tile that was visited must stay free!
+              lazy val canBlock = !newFree(nextCandPos)
+              lazy val isALoop = isLoop((coord, nextDir(dir)), Set(currentTile))(using
+                grid.updated(nextCandPos, Tile.Block),
+              )
+              if isNew && canBlock && isALoop then acc + nextCandPos
               else acc
             potentialLoopBlockPos((nextCandPos, dir), newAcc, newFree)
 
