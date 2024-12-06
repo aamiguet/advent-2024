@@ -48,6 +48,7 @@ object Day5 extends App with Data("data/day5.txt"):
         .map:
           case s"$p1|$p2" => p2.toInt -> p1.toInt
         .groupBy(_._1)
+        .view
         .mapValues(_.map(_._2).toSet)
         .toMap
       val updates = us.tail.map:
