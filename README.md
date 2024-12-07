@@ -6,3 +6,4 @@
 * Day 4: a missed opportunity to use named tuples. Next time!
 * Day 5: I refactored day 4!
 * Day 6: took me quite a long time to figure out what I was missing.
+* Day 7: I didn't lose any time today 😁

@@ -110,5 +110,5 @@ object Day6 extends Data("data/day6.txt"):
 
   given grid: Map[Coord, Tile] = parseGrid(lines)
 
-  @main def part1(): Unit = println(visitedTileCount())
-  @main def part2(): Unit = println(potentialLoopCount())
+  @main def d6part1(): Unit = println(visitedTileCount())
+  @main def d6part2(): Unit = println(potentialLoopCount())
