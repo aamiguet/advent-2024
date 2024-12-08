@@ -28,32 +28,34 @@ object Day8 extends Data("data/day8.txt"):
       yield (x, y) -> c
       City(lines.size, lines.head.size, antennas)
 
-  extension (p: Position) def unary_- = (-p.x, -p.y)
-
-  def nextPos(pos: Position, v: Position): Position =
-    (pos.x + v.x, pos.y + v.y)
+  extension (p: Position)
+    def unary_- = (-p.x, -p.y)
+    def +(other: Position) =
+      (p.x + other.x, p.y + other.y)
+    def -(other: Position) =
+      (p.x - other.x, p.y - other.y)
 
   def oppositeAntinodes(loc1: Position, loc2: Position)(using city: City): Set[Position] =
     val v: Position = (loc1.x - loc2.x, loc1.y - loc2.y)
     Set(
-      nextPos(loc1, v),
-      nextPos(loc2, -v),
+      loc1 + v,
+      loc2 - v,
     ).filter(city.inbound)
 
   def resonantAntinodes(loc1: Position, loc2: Position)(using city: City): Set[Position] =
     def loop(pos: Position, v: Position, acc: Set[Position] = Set()): Set[Position] =
       if !city.inbound(pos) then acc
-      else loop(nextPos(pos, v), v, acc + pos)
-    val v: Position = (loc1.x - loc2.x, loc1.y - loc2.y)
+      else loop(pos + v, v, acc + pos)
+    val v: Position = loc1 - loc2
     loop(loc1, v) ++ loop(loc2, -v)
 
   def antinodes(locs: List[Position], f: (Position, Position) => Set[Position], acc: Set[Position])(
       using City,
   ): Set[Position] =
-    if locs.tail.isEmpty then acc
-    else
-      val newAcc = acc ++ locs.tail.flatMap(l => f(l, locs.head))
-      antinodes(locs.tail, f, newAcc)
+    locs
+      .combinations(2)
+      .foldLeft(acc): (a, ls) =>
+        a ++ f(ls.head, ls.last)
 
   def antinodesPosition(f: (Position, Position) => Set[Position])(using city: City): Set[Position] =
     city.antennaTypes.foldLeft(Set()): (acc, a) =>
