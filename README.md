@@ -8,3 +8,4 @@
 * Day 6: took me quite a long time to figure out what I was missing.
 * Day 7: I didn't lose any time today 😁
 * Day 8: I was expecting a totally different part 2
+* Day 9: `boundary`, multiple nested `while` loops, absolutely unreadable code but it works!
