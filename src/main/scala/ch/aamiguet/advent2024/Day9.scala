@@ -60,33 +60,31 @@ object Day9 extends Data("data/day9.txt"):
           i += s + 1
 
     var filePtr = disk.size - 1
-    boundary:
-      while !fm.isEmpty
-      do
-        while disk(filePtr).isFree do filePtr -= 1
-        val file = disk(filePtr)
-        var fileSize = 0
-        while disk(filePtr - fileSize) == file do fileSize += 1
-        filePtr -= fileSize
-        fm.filter((fs, i) => i > 0 && fileSize <= fs && i < filePtr)
-          .toList
-          .sortWith(_._2 < _._2)
-          .headOption match
-          case Some((fs, index)) =>
-            for i <- 0 until fileSize
-            yield
-              disk(i + index) = file
-              disk(filePtr + 1 + i) = Free
-            fm.remove(fs)
-            val rest = fs - fileSize
-            if rest > 0 then
-              val candIndex = index + fileSize
-              if !fm.isDefinedAt(rest) || fm(rest) > candIndex then fm(rest) = candIndex
-            udpateFm(index + fileSize, filePtr, fs)
-          case _ => ()
-        fm.keySet.foreach: k =>
-          if fm(k) > filePtr then fm.remove(k)
-        if fm.isEmpty then break(())
+    while !fm.isEmpty
+    do
+      while disk(filePtr).isFree do filePtr -= 1
+      val file = disk(filePtr)
+      var fileSize = 0
+      while disk(filePtr - fileSize) == file do fileSize += 1
+      filePtr -= fileSize
+      fm.filter((fs, i) => i > 0 && fileSize <= fs && i < filePtr)
+        .toList
+        .sortWith(_._2 < _._2)
+        .headOption match
+        case Some((fs, index)) =>
+          for i <- 0 until fileSize
+          yield
+            disk(i + index) = file
+            disk(filePtr + 1 + i) = Free
+          fm.remove(fs)
+          val rest = fs - fileSize
+          if rest > 0 then
+            val candIndex = index + fileSize
+            if !fm.isDefinedAt(rest) || fm(rest) > candIndex then fm(rest) = candIndex
+          udpateFm(index + fileSize, filePtr, fs)
+        case _ => ()
+      fm.keySet.foreach: k =>
+        if fm(k) > filePtr then fm.remove(k)
 
   def checksum(disk: ArrayBuffer[Block]): Long =
     disk.zipWithIndex.foldLeft(0L):
