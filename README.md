@@ -9,3 +9,4 @@
 * Day 7: I didn't lose any time today 😁
 * Day 8: I was expecting a totally different part 2
 * Day 9: `boundary`, multiple nested `while` loops, absolutely unreadable code but it works!
+* Day 10: chill one!
