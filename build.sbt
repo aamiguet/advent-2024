@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.6.2-RC3"
+ThisBuild / scalaVersion := "3.6.2"
 ThisBuild / scalacOptions ++= Seq(
   "-encoding",
   "utf-8",
