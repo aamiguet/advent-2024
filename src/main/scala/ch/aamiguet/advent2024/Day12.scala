@@ -47,10 +47,9 @@ object Day12 extends Data("data/day12.txt"):
       plots(toVisit -- p.positions, p :: acc)
 
   def fences(plot: Plot)(using farmMap: Map[Position, Char]): Set[Fence] =
-    def loop(toVisit: List[Position], fenced: Set[Fence]): Set[Fence] =
+    def loop(toVisit: List[Position], fences: Set[Fence]): Set[Fence] =
       if toVisit.isEmpty then
-        // println(s"${plot.plant} - ${fenced.size}, price : ${fenced.size * plot.positions.size}")
-        fenced
+        fences
       else
         val toFence: Set[Fence] =
           DIRECTIONS
@@ -60,7 +59,7 @@ object Day12 extends Data("data/day12.txt"):
             .map:
               case (direction, _) => (toVisit.head, direction)
             .toSet
-        loop(toVisit.tail, fenced ++ toFence)
+        loop(toVisit.tail, fences ++ toFence)
     loop(plot.positions.toList, Set.empty[Fence])
 
   def perimeter(plot: Plot)(using farmMap: Map[Position, Char]): Long =
