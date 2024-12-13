@@ -11,3 +11,5 @@
 * Day 9: `boundary`, multiple nested `while` loops, absolutely unreadable code but it works!
 * Day 10: chill one!
 * Day 11: I originally had the correct idea, but I went astray before going back to it.
+* Day 12: I think the way I solved part 1 made part 2 easy (while still being more complicated that it could have been)
+* Day 13: Good old linear algebra
