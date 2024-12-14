@@ -12,4 +12,5 @@
 * Day 10: chill one!
 * Day 11: I originally had the correct idea, but I went astray before going back to it.
 * Day 12: I think the way I solved part 1 made part 2 easy (while still being more complicated that it could have been)
-* Day 13: Good old linear algebra
+* Day 13: good old linear algebra
+* Day 14: solving part 2 required a small font size for the console
