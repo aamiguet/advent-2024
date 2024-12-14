@@ -6,12 +6,6 @@ object Day14 extends Data("data/day14.txt"):
 
   type Position = (x: Int, y: Int)
 
-  extension (n: Int)
-    inline def %+(div: Int): Int =
-      val m = n % div
-      if m < 0 then m + div
-      else m
-
   extension (p: Position)
     def unary_- = (-p.x, -p.y)
     inline def +(other: Position) =
@@ -21,7 +15,7 @@ object Day14 extends Data("data/day14.txt"):
     inline def *(steps: Int): Position =
       (p.x * steps, p.y * steps)
     inline def %(width: Int, height: Int): Position =
-      (p.x %+ width, p.y %+ height)
+      (math.floorMod(p.x, width), math.floorMod(p.y, height))
 
   type Robot = (initPos: Position, velocity: Position)
 
