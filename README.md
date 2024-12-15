@@ -14,3 +14,4 @@
 * Day 12: I think the way I solved part 1 made part 2 easy (while still being more complicated that it could have been)
 * Day 13: good old linear algebra
 * Day 14: solving part 2 required a small font size for the console
+* Day 15: I should rewrite `moveTilesVertically` for clarity but... "oh well, it works!"
