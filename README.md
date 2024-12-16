@@ -15,3 +15,4 @@
 * Day 13: good old linear algebra
 * Day 14: solving part 2 required a small font size for the console
 * Day 15: I should rewrite `moveTilesVertically` for clarity but... "oh well, it works!"
+* Day 16: far from optimized... takes a few seconds to compute
