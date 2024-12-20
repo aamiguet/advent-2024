@@ -18,3 +18,4 @@
 * Day 16: far from optimized... takes a few seconds to compute
 * Day 18: brute forcing part 2 works!
 * Day 19: `Long`, why is it always `Long`? Joking that was not the issue, cache does magic though!
+* Day 20: feels like a nice solution, but considering it takes a bit more than a second, I guess we can do better.
