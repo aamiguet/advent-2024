@@ -17,3 +17,4 @@
 * Day 15: I should rewrite `moveTilesVertically` for clarity but... "oh well, it works!"
 * Day 16: far from optimized... takes a few seconds to compute
 * Day 18: brute forcing part 2 works!
+* Day 19: `Long`, why is it always `Long`? Joking that was not the issue, cache does magic though!
