@@ -20,3 +20,4 @@
 * Day 19: `Long`, why is it always `Long`? Joking that was not the issue, cache does magic though!
 * Day 20: feels like a nice solution, but considering it takes a bit more than a second, I guess we can do better.
 * Day 21: part 2 will wait
+* Day 22: all these power of twos are suspicious! Is there a math trick there? My naive solution takes about 8s for part 2.
