@@ -23,3 +23,4 @@
 * Day 22: all these power of twos are suspicious! Is there a math trick there? My naive solution takes about 8s for part 2.
 * Day 23: wow I feel smart today 😎
 * Day 24: solving part 2 by manually fixing the gates 😂
+* Day 25: time to go back and get those two missing stars
